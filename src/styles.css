@@ -249,3 +249,43 @@
 @utility float-slow {
   animation: float-slow 9s ease-in-out infinite;
 }
+
+/* WhatsApp floating chat button */
+@utility whatsapp-float {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 9999px;
+  background-color: #25d366;
+  color: #ffffff;
+  padding: 0.75rem;
+  box-shadow: 0 8px 24px oklch(0.27 0.11 264 / 0.25);
+  transition: transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+
+.whatsapp-float__label {
+  display: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding-right: 0.5rem;
+  white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+  .whatsapp-float {
+    padding: 0.875rem 1.125rem;
+  }
+  .whatsapp-float__label {
+    display: inline;
+  }
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px oklch(0.27 0.11 264 / 0.3);
+  background-color: #1ebe5b;
+}

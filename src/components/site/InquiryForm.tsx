@@ -1,9 +1,10 @@
-import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { toast } from "sonner";
 
 import { PROGRAM_OPTIONS } from "@/data/site";
-import { submitInquiry } from "@/lib/inquiry.functions";
+
+const APPS_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbzNyfOiDCTpSrGVdFH93AHLU65ux_QVVGgAdgC0CqlppUy7j3FJ4XgrpzZZ2DZcHZ8h/exec";
 
 type Variant = "admission" | "contact";
 
@@ -25,7 +26,6 @@ const labelClass = "mb-2 block font-display text-[0.8rem] font-semibold text-pri
 export function InquiryForm({ variant = "admission" }: { variant?: Variant }) {
   const [values, setValues] = useState(EMPTY);
   const [submitting, setSubmitting] = useState(false);
-  const send = useServerFn(submitInquiry);
 
   const set = (key: keyof typeof EMPTY) => (event: { target: { value: string } }) =>
     setValues((prev) => ({ ...prev, [key]: event.target.value }));
@@ -35,11 +35,14 @@ export function InquiryForm({ variant = "admission" }: { variant?: Variant }) {
     if (submitting) return;
     setSubmitting(true);
     try {
-      await send({
-        data: {
+      await fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "content-type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
           ...values,
           form: variant === "admission" ? "Admission Inquiry" : "Contact Form",
-        },
+        }),
       });
       toast.success("Thank you! Your inquiry has been received.", {
         description: "Our team will contact you shortly.",

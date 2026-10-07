@@ -10,6 +10,9 @@ export const getRouter = () => {
     context: { queryClient },
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
+    // Prerender requests pages with a trailing slash; preserving it avoids a
+    // redirect loop (/about/ -> /about -> /about/) during static generation.
+    trailingSlash: "preserve",
   });
 
   return router;

@@ -13,8 +13,21 @@ Home, About, O Level Coaching, A Level Coaching, University Entry Test Prep, Tea
 ```bash
 npm install
 npm run dev      # start the dev server
-npm run build    # production build
+npm run build    # production build -> outputs the dist/ folder
 ```
+
+## Deploying to static hosting
+
+`npm run build` creates a `dist/` folder. Every page is prerendered to static
+HTML, so the site can be uploaded to any static host (cPanel, Netlify, Vercel,
+GitHub Pages, etc.):
+
+- Upload the **contents of `dist/client`** to your hosting's web root
+  (e.g. `public_html`). It contains `index.html`, one folder per page
+  (`about/index.html`, `contact/index.html`, ...), and all assets.
+- The contact/admission forms need the server-side environment variables
+  below; on pure static hosting the forms will not submit, but all pages
+  display fine.
 
 ## Contact form (Google Sheets)
 

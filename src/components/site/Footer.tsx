@@ -95,7 +95,7 @@ export function Footer() {
               <li className="flex gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
                 <span>
-                  D, 1st Floor D-31, Block Satellite, near Jinnah Institute, Town, Rawalpindi
+                  1st Floor D-31, D Block, Satellite Town, near Jinnah Institute, Rawalpindi
                 </span>
               </li>
             </ul>

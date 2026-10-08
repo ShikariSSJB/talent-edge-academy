@@ -26,7 +26,7 @@ const INFO = [
   {
     icon: MapPin,
     label: "Address",
-    value: "D, 1st Floor D-31, Block Satellite, near Jinnah Institute, Town, Rawalpindi",
+    value: "1st Floor D-31, D Block, Satellite Town, near Jinnah Institute, Rawalpindi",
   },
 ];
 
